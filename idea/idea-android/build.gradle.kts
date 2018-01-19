@@ -24,7 +24,7 @@ dependencies {
 
     compileOnly(intellijDep()) { includeJars("openapi", "idea", "extensions", "util", "guava", "android-base-common", rootProject = rootProject) }
     compileOnly(intellijPluginDep("android")) {
-        includeJars("android", "android-common", "common", "sdk-common", "sdklib", "sdk-tools", "layoutlib-api")
+        includeJars("android", "android-common", "common", "sdk-common", "sdklib", "sdk-tools", "layoutlib-api", rootProject = rootProject)
     }
 
     testCompile(projectDist(":kotlin-test:kotlin-test-jvm"))
@@ -39,7 +39,7 @@ dependencies {
     testCompile(intellijDep()) { includeJars("gson", rootProject = rootProject) }
     testCompile(intellijPluginDep("properties"))
     testCompileOnly(intellijPluginDep("android")) {
-        includeJars("android", "android-common", "common", "sdk-common", "sdklib", "sdk-tools", "layoutlib-api")
+        includeJars("android", "android-common", "build-common", "common", "sdk-common", "sdklib", "sdk-tools", "layoutlib-api", rootProject = rootProject)
     }
 
     testRuntime(projectDist(":kotlin-reflect"))
@@ -51,6 +51,7 @@ dependencies {
     testRuntime(project(":allopen-ide-plugin"))
 
     testRuntime(intellijPluginDep("android"))
+    testRuntime(intellijPluginDep("smali"))
     testRuntime(intellijPluginDep("copyright"))
     testRuntime(intellijPluginDep("coverage"))
     testRuntime(intellijPluginDep("gradle"))
@@ -59,7 +60,7 @@ dependencies {
     testRuntime(intellijPluginDep("java-decompiler"))
     testRuntime(intellijPluginDep("java-i18n"))
     testRuntime(intellijPluginDep("junit"))
-    testRuntime(intellijPluginDep("maven"))
+    //testRuntime(intellijPluginDep("maven"))
     testRuntime(intellijPluginDep("testng"))
 
     androidSdk(project(":custom-dependencies:android-sdk", configuration = "androidSdk"))
